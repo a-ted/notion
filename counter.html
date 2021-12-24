@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<style>
+    .counter-widget-container {
+        display: flex;
+        margin-top: auto;
+        margin-bottom: auto;
+        justify-content: center;
+        align-items:center;
+    }
+    .counter-widget-wrapper {
+        display: flex;
+        orientation: vertical;
+        direction: normal;
+        flex-direction:column;
+    }
+    .heading {
+        font-family:'Courier New', Courier, monospace;
+        font-size: 200%;
+        text-align: center;
+        margin-top: 0%;
+        margin-bottom: 0%;
+    }
+    .main-container {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .count-display {
+        margin-top: 0%;
+        margin-bottom: 0%;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .counter-button {
+        margin-top: 0%;
+        margin-bottom: 0%;
+        border: none;
+        box-sizing: border-box;
+        border-radius: 4px;
+        width: 25px;
+        height: 25px;
+        background-color: #f0f0f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .counter-button:hover {
+        background-color: #bdbdbd;
+    }
+    .counter-button:hover .button-stroke{
+        stroke: #fff;
+    }
+</style>
+
+<div class="counter-widget-container">
+    <div class="counter-widget-wrapper">
+        <p class="heading">
+            <b>2022 Push-Ups</b>
+        </p>
+        <div class="main-container">
+            <button id="minus_button" class="counter-button">
+                <svg class="button-sign" width="50" height="2" viewBox="0 0 10 1" fill="none">
+                    <path class="button-stroke" d="M1,1 H9" stroke="#9E9E9E" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+            </button>
+    
+            <div>
+                <h2 id="push_up_number" class="count-display" style="font-family: 'Courier New', Courier, monospace; font-size: 200%;"></h2>
+            </div>
+            
+            <button id="plus_button" class="counter-button">
+                <svg class="button-sign" width="50" height="20" viewBox="0 0 10 10" fill="none">
+                    <path class="button-stroke" d="M5,1 V9" stroke="#9E9E9E" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path class="button-stroke" d="M1,5 H9" stroke="#9E9E9E" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+            </button>
+    
+            <script>
+                if (!localStorage.count) {
+                    localStorage.count = 0;
+                }
+                document.getElementById("push_up_number").innerHTML = localStorage.count;
+    
+                function plus() {
+                    localStorage.count = Number(localStorage.count) + 1;
+                    document.getElementById("push_up_number").innerHTML = localStorage.count;
+                }
+                function minus() {
+                    localStorage.count = Number(localStorage.count) - 1;
+                    document.getElementById("push_up_number").innerHTML = localStorage.count;
+                }
+    
+                plus_button.onclick = plus;
+                minus_button.onclick = minus;
+            </script>
+        </div>
+    </div>
+</div>
